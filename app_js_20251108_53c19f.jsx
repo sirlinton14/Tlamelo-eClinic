@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './App.css';
+import Chat from './Chat.js';
 import Chat from './Chat';
 
 function App() {
