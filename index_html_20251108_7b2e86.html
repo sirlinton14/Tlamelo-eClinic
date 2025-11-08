@@ -4,17 +4,181 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tlamelo eClinic - AI Healthcare</title>
-    <link rel="stylesheet" href="App.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+        
+        .services {
+            padding: 20px;
+            display: grid;
+            gap: 15px;
+        }
+        
+        .service-btn {
+            padding: 20px;
+            border: none;
+            border-radius: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: left;
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+        }
+        
+        .service-btn.primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+        
+        .service-btn.emergency {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+        }
+        
+        .service-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .emergency-contacts {
+            padding: 20px;
+            display: none;
+        }
+        
+        .contact-item {
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin-bottom: 10px;
+            border-left: 4px solid #e74c3c;
+        }
+        
+        .back-btn {
+            background: #95a5a6;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            margin-top: 15px;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <div id="root"></div>
-    
-    <!-- Load React -->
-    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <!-- Your React App -->
-    <script type="text/babel" src="App.js"></script>
+    <div class="container">
+        <div class="header">
+            <h1>🏥 Tlamelo eClinic</h1>
+            <p>AI-Powered Healthcare Platform for Botswana</p>
+        </div>
+        
+        <div class="services" id="services">
+            <button class="service-btn primary" onclick="showChat()">
+                🤖 AI Symptom Checker
+            </button>
+            <button class="service-btn emergency" onclick="showEmergency()">
+                🚨 Emergency Contacts
+            </button>
+            <button class="service-btn" onclick="showFacilities()">
+                📍 Find Facilities
+            </button>
+            <button class="service-btn" onclick="showFirstAid()">
+                🩹 First Aid Guide
+            </button>
+            <button class="service-btn" onclick="showMedicine()">
+                💊 Medicine Delivery
+            </button>
+            <button class="service-btn" onclick="showBooking()">
+                📅 Book Doctor
+            </button>
+        </div>
+        
+        <div class="emergency-contacts" id="emergencyContacts">
+            <h2>🚨 Emergency Contacts</h2>
+            <div class="contact-item">
+                <h3>Emergency Services</h3>
+                <p style="font-size: 24px; font-weight: bold; color: #e74c3c;">997</p>
+                <button onclick="callNumber('997')" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer;">📞 Call</button>
+            </div>
+            <div class="contact-item">
+                <h3>Police</h3>
+                <p style="font-size: 24px; font-weight: bold; color: #e74c3c;">999</p>
+                <button onclick="callNumber('999')" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer;">📞 Call</button>
+            </div>
+            <div class="contact-item">
+                <h3>Ambulance</h3>
+                <p style="font-size: 24px; font-weight: bold; color: #e74c3c;">997</p>
+                <button onclick="callNumber('997')" style="background: #e74c3c; color: white; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer;">📞 Call</button>
+            </div>
+            <button class="back-btn" onclick="showHome()">← Back to Home</button>
+        </div>
+    </div>
+
+    <script>
+        function showHome() {
+            document.getElementById('services').style.display = 'grid';
+            document.getElementById('emergencyContacts').style.display = 'none';
+        }
+        
+        function showEmergency() {
+            document.getElementById('services').style.display = 'none';
+            document.getElementById('emergencyContacts').style.display = 'block';
+        }
+        
+        function showChat() {
+            alert('🤖 AI Symptom Checker: This feature would open a chat interface for symptom assessment. Coming soon!');
+        }
+        
+        function showFacilities() {
+            alert('📍 Healthcare Facilities: Showing nearby hospitals and clinics in Botswana.');
+        }
+        
+        function showFirstAid() {
+            alert('🩹 First Aid Guide: Step-by-step emergency instructions.');
+        }
+        
+        function showMedicine() {
+            alert('💊 Medicine Delivery: Connect with local pharmacies for delivery.');
+        }
+        
+        function showBooking() {
+            alert('📅 Book Doctor: Schedule appointments with healthcare providers.');
+        }
+        
+        function callNumber(number) {
+            if(confirm(`Call ${number}?`)) {
+                window.open(`tel:${number}`);
+            }
+        }
+    </script>
 </body>
 </html>
