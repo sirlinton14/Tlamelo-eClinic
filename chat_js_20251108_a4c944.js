@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import Chat from './Chat.js';
+import './Chat.css';
 
 const Chat = ({ onBack }) => {
   const [chatMessages, setChatMessages] = useState([
